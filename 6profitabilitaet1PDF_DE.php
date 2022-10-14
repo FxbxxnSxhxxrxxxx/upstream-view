@@ -5,31 +5,31 @@ require("fpdf.php");
 $pdf = new FPDF();
 
 //Daten des Unternehmens
-$p_name = $_GET['name'];
-$p_isin = $_GET['isin'];
-$p_jahr_geschaeftsbericht = $_GET['aktuellesJahr'];
-$p_waerhung = $_GET['waehrung'];
-$p_einheit = $_GET['einheit'];
+$p_name = $_POST['name'];
+$p_isin = $_POST['isin'];
+$p_jahr_geschaeftsbericht = $_POST['aktuellesJahr'];
+$p_waerhung = $_POST['waehrung'];
+$p_einheit = $_POST['einheit'];
 $p_zeitraum = 0;
 
 //Initialisierung der Werte Anfang_______________________________________
 
-$p_umsatz[0] = $_GET['umsatz0'];
-$p_abschreibungen[0] = $_GET['abschreibungen0'];
-$p_ebit[0] = $_GET['ebit0'];
-$p_zinsaufwendungen[0] = $_GET['zinsaufwendungen0'];
-$p_steuern[0] = $_GET['steuern0'];
-$p_jahresueberschuss[0] = $_GET['jahresueberschuss0'];
+$p_umsatz[0] = $_POST['umsatz0'];
+$p_abschreibungen[0] = $_POST['abschreibungen0'];
+$p_ebit[0] = $_POST['ebit0'];
+$p_zinsaufwendungen[0] = $_POST['zinsaufwendungen0'];
+$p_steuern[0] = $_POST['steuern0'];
+$p_jahresueberschuss[0] = $_POST['jahresueberschuss0'];
 
-$p_bilanzsumme[0] = $_GET['bilanzsumme0'];
-$p_eigenkapital[0] = $_GET['eigenkapital0'];
-$p_anlagevermoegen[0] = $_GET['anlagevermoegen0'];
-$p_vorraete[0] = $_GET['vorraete0'];
-$p_forderungenLuL[0] = $_GET['forderungenLuL0'];
-$p_verbindlichkeitenLuL[0] = $_GET['verbindlichkeitenLuL0'];
+$p_bilanzsumme[0] = $_POST['bilanzsumme0'];
+$p_eigenkapital[0] = $_POST['eigenkapital0'];
+$p_anlagevermoegen[0] = $_POST['anlagevermoegen0'];
+$p_vorraete[0] = $_POST['vorraete0'];
+$p_forderungenLuL[0] = $_POST['forderungenLuL0'];
+$p_verbindlichkeitenLuL[0] = $_POST['verbindlichkeitenLuL0'];
 
-$p_cashflowOperativ[0] = $_GET['operaCashFlow0'];
-$p_cashflowInvestiv[0] = $_GET['investCashFlow0'];
+$p_cashflowOperativ[0] = $_POST['operaCashFlow0'];
+$p_cashflowInvestiv[0] = $_POST['investCashFlow0'];
 
 //Initialisierung der Werte Ende__________________________________________
 
