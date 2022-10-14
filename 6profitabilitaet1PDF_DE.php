@@ -5,31 +5,31 @@ require("fpdf.php");
 $pdf = new FPDF();
 
 //Daten des Unternehmens
-$p_name = $_PUT['name'];
-$p_isin = $_PUT['isin'];
-$p_jahr_geschaeftsbericht = $_PUT['aktuellesJahr'];
-$p_waerhung = $_PUT['waehrung'];
-$p_einheit = $_PUT['einheit'];
+$p_name = $_DELETE['name'];
+$p_isin = $_DELETE['isin'];
+$p_jahr_geschaeftsbericht = $_DELETE['aktuellesJahr'];
+$p_waerhung = $_DELETE['waehrung'];
+$p_einheit = $_DELETE['einheit'];
 $p_zeitraum = 0;
 
 //Initialisierung der Werte Anfang_______________________________________
 
-$p_umsatz[0] = $_PUT['umsatz0'];
-$p_abschreibungen[0] = $_PUT['abschreibungen0'];
-$p_ebit[0] = $_PUT['ebit0'];
-$p_zinsaufwendungen[0] = $_PUT['zinsaufwendungen0'];
-$p_steuern[0] = $_PUT['steuern0'];
-$p_jahresueberschuss[0] = $_PUT['jahresueberschuss0'];
+$p_umsatz[0] = $_DELETE['umsatz0'];
+$p_abschreibungen[0] = $_DELETE['abschreibungen0'];
+$p_ebit[0] = $_DELETE['ebit0'];
+$p_zinsaufwendungen[0] = $_DELETE['zinsaufwendungen0'];
+$p_steuern[0] = $_DELETE['steuern0'];
+$p_jahresueberschuss[0] = $_DELETE['jahresueberschuss0'];
 
-$p_bilanzsumme[0] = $_PUT['bilanzsumme0'];
-$p_eigenkapital[0] = $_PUT['eigenkapital0'];
-$p_anlagevermoegen[0] = $_PUT['anlagevermoegen0'];
-$p_vorraete[0] = $_PUT['vorraete0'];
-$p_forderungenLuL[0] = $_PUT['forderungenLuL0'];
-$p_verbindlichkeitenLuL[0] = $_PUT['verbindlichkeitenLuL0'];
+$p_bilanzsumme[0] = $_DELETE['bilanzsumme0'];
+$p_eigenkapital[0] = $_DELETE['eigenkapital0'];
+$p_anlagevermoegen[0] = $_DELETE['anlagevermoegen0'];
+$p_vorraete[0] = $_DELETE['vorraete0'];
+$p_forderungenLuL[0] = $_DELETE['forderungenLuL0'];
+$p_verbindlichkeitenLuL[0] = $_DELETE['verbindlichkeitenLuL0'];
 
-$p_cashflowOperativ[0] = $_PUT['operaCashFlow0'];
-$p_cashflowInvestiv[0] = $_PUT['investCashFlow0'];
+$p_cashflowOperativ[0] = $_DELETE['operaCashFlow0'];
+$p_cashflowInvestiv[0] = $_DELETE['investCashFlow0'];
 
 //Initialisierung der Werte Ende__________________________________________
 

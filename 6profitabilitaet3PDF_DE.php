@@ -5,61 +5,61 @@ require("fpdf.php");
 $pdf = new FPDF();
 
 //Daten des Unternehmens
-$p_name = $_PUT['name'];
-$p_isin = $_PUT['isin'];
-$p_jahr_geschaeftsbericht = $_PUT['aktuellesJahr'];
-$p_waerhung = $_PUT['waehrung'];
-$p_einheit = $_PUT['einheit'];
+$p_name = $_DELETE['name'];
+$p_isin = $_DELETE['isin'];
+$p_jahr_geschaeftsbericht = $_DELETE['aktuellesJahr'];
+$p_waerhung = $_DELETE['waehrung'];
+$p_einheit = $_DELETE['einheit'];
 $p_zeitraum = 2;
 
 //Initialisierung der Werte Anfang_______________________________________
 
-$p_umsatz[0] = $_PUT['umsatz0'];
-$p_umsatz[1] = $_PUT['umsatz1'];
-$p_umsatz[2] = $_PUT['umsatz2'];
+$p_umsatz[0] = $_DELETE['umsatz0'];
+$p_umsatz[1] = $_DELETE['umsatz1'];
+$p_umsatz[2] = $_DELETE['umsatz2'];
 
-$p_abschreibungen[0] = $_PUT['abschreibungen0'];
-$p_abschreibungen[1] = $_PUT['abschreibungen1'];
-$p_abschreibungen[2] = $_PUT['abschreibungen2'];
-$p_ebit[0] = $_PUT['ebit0'];
-$p_ebit[1] = $_PUT['ebit1'];
-$p_ebit[2] = $_PUT['ebit2'];
-$p_zinsaufwendungen[0] = $_PUT['zinsaufwendungen0'];
-$p_zinsaufwendungen[1] = $_PUT['zinsaufwendungen1'];
-$p_zinsaufwendungen[2] = $_PUT['zinsaufwendungen2'];
+$p_abschreibungen[0] = $_DELETE['abschreibungen0'];
+$p_abschreibungen[1] = $_DELETE['abschreibungen1'];
+$p_abschreibungen[2] = $_DELETE['abschreibungen2'];
+$p_ebit[0] = $_DELETE['ebit0'];
+$p_ebit[1] = $_DELETE['ebit1'];
+$p_ebit[2] = $_DELETE['ebit2'];
+$p_zinsaufwendungen[0] = $_DELETE['zinsaufwendungen0'];
+$p_zinsaufwendungen[1] = $_DELETE['zinsaufwendungen1'];
+$p_zinsaufwendungen[2] = $_DELETE['zinsaufwendungen2'];
 
-$p_steuern[0] = $_PUT['steuern0'];
-$p_steuern[1] = $_PUT['steuern1'];
-$p_steuern[2] = $_PUT['steuern2'];
-$p_jahresueberschuss[0] = $_PUT['jahresueberschuss0'];
-$p_jahresueberschuss[1] = $_PUT['jahresueberschuss1'];
-$p_jahresueberschuss[2] = $_PUT['jahresueberschuss2'];
+$p_steuern[0] = $_DELETE['steuern0'];
+$p_steuern[1] = $_DELETE['steuern1'];
+$p_steuern[2] = $_DELETE['steuern2'];
+$p_jahresueberschuss[0] = $_DELETE['jahresueberschuss0'];
+$p_jahresueberschuss[1] = $_DELETE['jahresueberschuss1'];
+$p_jahresueberschuss[2] = $_DELETE['jahresueberschuss2'];
 
-$p_bilanzsumme[0] = $_PUT['bilanzsumme0'];
-$p_bilanzsumme[1] = $_PUT['bilanzsumme1'];
-$p_bilanzsumme[2] = $_PUT['bilanzsumme2'];
-$p_eigenkapital[0] = $_PUT['eigenkapital0'];
-$p_eigenkapital[1] = $_PUT['eigenkapital1'];
-$p_eigenkapital[2] = $_PUT['eigenkapital2'];
-$p_anlagevermoegen[0] = $_PUT['anlagevermoegen0'];
-$p_anlagevermoegen[1] = $_PUT['anlagevermoegen1'];
-$p_anlagevermoegen[2] = $_PUT['anlagevermoegen2'];
-$p_vorraete[0] = $_PUT['vorraete0'];
-$p_vorraete[1] = $_PUT['vorraete1'];
-$p_vorraete[2] = $_PUT['vorraete2'];
-$p_forderungenLuL[0] = $_PUT['forderungenLuL0'];
-$p_forderungenLuL[1] = $_PUT['forderungenLuL1'];
-$p_forderungenLuL[2] = $_PUT['forderungenLuL2'];
-$p_verbindlichkeitenLuL[0] = $_PUT['verbindlichkeitenLuL0'];
-$p_verbindlichkeitenLuL[1] = $_PUT['verbindlichkeitenLuL1'];
-$p_verbindlichkeitenLuL[2] = $_PUT['verbindlichkeitenLuL2'];
+$p_bilanzsumme[0] = $_DELETE['bilanzsumme0'];
+$p_bilanzsumme[1] = $_DELETE['bilanzsumme1'];
+$p_bilanzsumme[2] = $_DELETE['bilanzsumme2'];
+$p_eigenkapital[0] = $_DELETE['eigenkapital0'];
+$p_eigenkapital[1] = $_DELETE['eigenkapital1'];
+$p_eigenkapital[2] = $_DELETE['eigenkapital2'];
+$p_anlagevermoegen[0] = $_DELETE['anlagevermoegen0'];
+$p_anlagevermoegen[1] = $_DELETE['anlagevermoegen1'];
+$p_anlagevermoegen[2] = $_DELETE['anlagevermoegen2'];
+$p_vorraete[0] = $_DELETE['vorraete0'];
+$p_vorraete[1] = $_DELETE['vorraete1'];
+$p_vorraete[2] = $_DELETE['vorraete2'];
+$p_forderungenLuL[0] = $_DELETE['forderungenLuL0'];
+$p_forderungenLuL[1] = $_DELETE['forderungenLuL1'];
+$p_forderungenLuL[2] = $_DELETE['forderungenLuL2'];
+$p_verbindlichkeitenLuL[0] = $_DELETE['verbindlichkeitenLuL0'];
+$p_verbindlichkeitenLuL[1] = $_DELETE['verbindlichkeitenLuL1'];
+$p_verbindlichkeitenLuL[2] = $_DELETE['verbindlichkeitenLuL2'];
 
-$p_cashflowOperativ[0] = $_PUT['operaCashFlow0'];
-$p_cashflowOperativ[1] = $_PUT['operaCashFlow1'];
-$p_cashflowOperativ[2] = $_PUT['operaCashFlow2'];
-$p_cashflowInvestiv[0] = $_PUT['investCashFlow0'];
-$p_cashflowInvestiv[1] = $_PUT['investCashFlow1'];
-$p_cashflowInvestiv[2] = $_PUT['investCashFlow2'];
+$p_cashflowOperativ[0] = $_DELETE['operaCashFlow0'];
+$p_cashflowOperativ[1] = $_DELETE['operaCashFlow1'];
+$p_cashflowOperativ[2] = $_DELETE['operaCashFlow2'];
+$p_cashflowInvestiv[0] = $_DELETE['investCashFlow0'];
+$p_cashflowInvestiv[1] = $_DELETE['investCashFlow1'];
+$p_cashflowInvestiv[2] = $_DELETE['investCashFlow2'];
 
 //Initialisierung der Werte Ende__________________________________________
 
