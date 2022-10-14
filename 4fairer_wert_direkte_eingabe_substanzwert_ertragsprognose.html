@@ -29,15 +29,6 @@
 
   </head>
 
-<body>
-
-<!--Break-->
-<br></br>
-<!--Break-->
-<br></br>
-<!--Break-->
-<br></br>
-
   <!-- ***** Header Area Start ***** -->
   <header class="header-area header-sticky">
       <div class="container">
@@ -58,7 +49,7 @@
               <button class="dropbtn">Home</button>
                 <div class="dropdown-content">
                   	<a href="index.html">Start</a>
-                  	<a href="2impressumDE.html">Impressum</a>
+                  	<a href="2impressum_de.html">Impressum</a>
 					<a href="datenschutz.html">Datenschutz</a>
                 </div>
             </div>
@@ -70,10 +61,21 @@
   </header>
   <!-- ***** Header Area End ***** -->
 
+<body>
+
+<!--Break-->
+<br></br>
+<!--Break-->
+<br></br>
+<!--Break-->
+<br></br>
+<!--Break-->
+<br></br>
+
 <!--Formular -->
 <div style="text-align:center">
-  <form  action="6profitabilitaet1PDF_DE.php" method="delete">
-    <br><font size="6">Basisdaten</font><br />
+  <form  action="5fairer_wert_mit_schaetzung_pdf.php" method="delete">
+<font size="6">Basisdaten</font><br />
     <input type="text" name="name" placeholder="Unternehmensname" required/>
     <p></p>
     <input type="text" name="isin" placeholder="ISIN" />
@@ -84,68 +86,43 @@
     <p></p>
     <input type="text" name="einheit" placeholder="Einheit" required/>
     <p></p>
-    <br><font size="6">Finanzdaten</font><br />
-  <p>Umsatz</p>
-    <input type="float" name="umsatz0" placeholder="Aktuelles Jahr" required/>
+    <input type="float" name="anzahlAktien" placeholder="Ausgestellte Aktien" required/>
+    <p></p>
+<font size="6">Daten zur Substanz</font><br />
+    <p>Eigene Schätzung</p>
+    <input type="float" name="schaetzung" placeholder="Wert in Einheit" required/>
 <!--Break-->
 <br></br>
-    <p>Abschreibungen</p>
-    <input type="float" name="abschreibungen0" placeholder="Aktuelles Jahr" required/>
+    <p>Allgemeine Sicherheitsmarge</p>
+    <input type="float" name="sicherheitsmarge" placeholder="%" required/>
 <!--Break-->
 <br></br>
-    <p>EBIT</p>
-    <input type="float" name="ebit0" placeholder="Aktuelles Jahr" required/>
+
+<font size="6">Daten zum Ertrag</font>
 <!--Break-->
 <br></br>
-    <p>Zinsaufwendungen</p>
-    <input type="float" name="zinsaufwendungen0" placeholder="Aktuelles Jahr" required/>
+    <input type="float" name="1" placeholder="Erstes Jahr" required/>
+    <p></p>
+    <input type="float" name="2" placeholder="Zweites Jahr" required/>
+    <p></p>
+    <input type="float" name="3" placeholder="Drittes Jahr" required/>
+    <p></p>
+    <input type="float" name="4" placeholder="Viertes Jahr" required/>
+    <p></p>
+    <input type="float" name="5" placeholder="Fünftes Jahr" required/>
 <!--Break-->
 <br></br>
-    <p>Steuern</p> 
-    <input type="float" name="steuern0" placeholder="Aktuelles Jahr" required/>
-<!--Break-->
-<br></br>
-    <p>Jahresüberschuss</p>
-    <input type="float" name="jahresueberschuss0" placeholder="Aktuelles Jahr" required/>
-<!--Break-->
-<br></br>
-    <p>Bilanzsumme</p>
-    <input type="float" name="bilanzsumme0" placeholder="Aktuelles Jahr" required/>
-<!--Break-->
-<br></br>
-    <p>Eigenkapital</p>
-    <input type="float" name="eigenkapital0" placeholder="Aktuelles Jahr" required/>
-<!--Break-->
-<br></br>
-    <p>Anlagevermölgen</p>
-    <input type="float" name="anlagevermoegen0" placeholder="Aktuelles Jahr" required/>
-<!--Break-->
-<br></br>
-    <p>Vorräte</p>
-    <input type="float" name="vorraete0" placeholder="Aktuelles Jahr" required/>
-<!--Break-->
-<br></br>
-    <p>Forderungen LuL</p>
-    <input type="float" name="forderungenLuL0" placeholder="Aktuelles Jahr" required/>
-<!--Break-->
-<br></br>
-    <p>Verbindlichkeiten LuL</p>
-    <input type="float" name="verbindlichkeitenLuL0" placeholder="Aktuelles Jahr" required/>
-<!--Break-->
-<br></br>
-    <p>Operativ. Cash Flow</p>
-    <input type="float" name="operaCashFlow0" placeholder="Aktuelles Jahr" required/>
-<!--Break-->
-<br></br>
-    <p>Invest. Cash Flow</p>
-    <input type="float" name="investCashFlow0" placeholder="Aktuelles Jahr" required/>
+  <input type="float" name="eigenkapitalkosten" placeholder="Eigenkapitalkosten in %" required/>
+  <p></p>
+  <input type="float" name="langfristigesWachstum" placeholder="Langfr. Wachstum in %" required/>
 <!--Break-->
 <br></br>
 
 <!--Button -->
-    <a href="6profitabilitaet1PDF_DE.php">
+    <a download="5fairer_wert_mit_schaetzung_pdf.php">
     <input type="submit" class="btn btn-primary" Value="Go!">
     </a>
+
   </form>
 
 <!--Break-->

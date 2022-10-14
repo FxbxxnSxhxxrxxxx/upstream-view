@@ -25,7 +25,7 @@
 
     <link rel="stylesheet" href="Stylesheet/stylesheet.css">
 
-
+    
   </head>
 
 <body>
@@ -36,7 +36,7 @@
 <br></br>
 <!--Break-->
 <br></br>
-
+ 
   <!-- ***** Header Area Start ***** -->
   <header class="header-area header-sticky">
       <div class="container">
@@ -52,19 +52,18 @@
 
               </div>
 
-             <div class="dropdown">
+            <div class="dropdown">
 
               <button class="dropbtn">Home</button>
                 <div class="dropdown-content">
                   	<a href="index.html">Start</a>
-                  	<a href="2impressumDE.html">Impressum</a>
+                  	<a href="2impressum_de.html">Impressum</a>
 					<a href="datenschutz.html">Datenschutz</a>
                 </div>
             </div>
 
           </div>
       </div>
-
 
   </header>
   <!-- ***** Header Area End ***** -->
@@ -73,8 +72,8 @@
 
 <!--Formular -->
 <div style="text-align:center">
-  <form  action="6profitabilitaet3PDF_DE.php" method="delete">
-    <br><font size="6">Basisdaten</font><br />
+  <form  action="6beides3_pdf_de.php" method="delete">
+<br><font size="6">Basisdaten</font><br/>
     <input type="text" name="name" placeholder="Unternehmensname" required/>
     <p></p>
     <input type="text" name="isin" placeholder="ISIN" />
@@ -84,13 +83,12 @@
     <input type="text" name="waehrung" placeholder="Währung" required/>
     <p></p>
     <input type="text" name="einheit" placeholder="Einheit" required/>
-<!--Break-->
-<br></br>
-<br><font size="6">Finanzdaten</font><br />
+    <p></p>
+    <br><font size="6">Finanzdaten</font><br />
   <p>Umsatz</p>
     <input type="float" name="umsatz0" placeholder="Aktuelles Jahr" required/>
     <p></p>
-    <input type="float" name="umsatz1" placeholder="Zweiaktuellstes Jahr" required/>
+    <input type="float" name="umsatz1" placeholder="Zweitaktuellstes Jahr" required/>
     <p></p>
     <input type="float" name="umsatz2" placeholder="Drittaktuellstes Jahr" required/>
 <!--Break-->
@@ -98,7 +96,7 @@
     <p>Abschreibungen</p>
     <input type="float" name="abschreibungen0" placeholder="Aktuelles Jahr" required/>
     <p></p>
-    <input type="float" name="abschreibungen1" placeholder="Zweiaktuellstes Jahr" required/>
+    <input type="float" name="abschreibungen1" placeholder="Zweitaktuellstes Jahr" required/>
     <p></p>
     <input type="float" name="abschreibungen2" placeholder="Drittaktuellstes Jahr" required/>
 <!--Break-->
@@ -106,7 +104,7 @@
     <p>EBIT</p>
     <input type="float" name="ebit0" placeholder="Aktuelles Jahr" required/>
     <p></p>
-    <input type="float" name="ebit1" placeholder="Zweiaktuellstes Jahr" required/>
+    <input type="float" name="ebit1" placeholder="Zweitaktuellstes Jahr" required/>
     <p></p>
     <input type="float" name="ebit2" placeholder="Drittaktuellstes Jahr" required/>
 <!--Break-->
@@ -114,15 +112,15 @@
     <p>Zinsaufwendungen</p>
     <input type="float" name="zinsaufwendungen0" placeholder="Aktuelles Jahr" required/>
     <p></p>
-    <input type="float" name="zinsaufwendungen1" placeholder="Zweiaktuellstes Jahr" required/>
+    <input type="float" name="zinsaufwendungen1" placeholder="Zweitaktuellstes Jahr" required/>
     <p></p>
     <input type="float" name="zinsaufwendungen2" placeholder="Drittaktuellstes Jahr" required/>
 <!--Break-->
 <br></br>
-    <p>Steuern</p>
+    <p>Steuern</p> 
     <input type="float" name="steuern0" placeholder="Aktuelles Jahr" required/>
     <p></p>
-    <input type="float" name="steuern1" placeholder="Zweiaktuellstes Jahr" required/>
+    <input type="float" name="steuern1" placeholder="Zweitaktuellstes Jahr" required/>
     <p></p>
     <input type="float" name="steuern2" placeholder="Drittaktuellstes Jahr" required/>
 <!--Break-->
@@ -130,7 +128,7 @@
     <p>Jahresüberschuss</p>
     <input type="float" name="jahresueberschuss0" placeholder="Aktuelles Jahr" required/>
     <p></p>
-    <input type="float" name="jahresueberschuss1" placeholder="Zweiaktuellstes Jahr" required/>
+    <input type="float" name="jahresueberschuss1" placeholder="Zweitaktuellstes Jahr" required/>
     <p></p>
     <input type="float" name="jahresueberschuss2" placeholder="Drittaktuellstes Jahr" required/>
 <!--Break-->
@@ -138,47 +136,111 @@
     <p>Bilanzsumme</p>
     <input type="float" name="bilanzsumme0" placeholder="Aktuelles Jahr" required/>
     <p></p>
-    <input type="float" name="bilanzsumme1" placeholder="Zweiaktuellstes Jahr" required/>
+    <input type="float" name="bilanzsumme1" placeholder="Zweitaktuellstes Jahr" required/>
     <p></p>
     <input type="float" name="bilanzsumme2" placeholder="Drittaktuellstes Jahr" required/>
 <!--Break-->
-<br></br>
+<br></br> 
     <p>Eigenkapital</p>
     <input type="float" name="eigenkapital0" placeholder="Aktuelles Jahr" required/>
     <p></p>
-    <input type="float" name="eigenkapital1" placeholder="Zweiaktuellstes Jahr" required/>
+    <input type="float" name="eigenkapital1" placeholder="Zweitaktuellstes Jahr" required/>
     <p></p>
     <input type="float" name="eigenkapital2" placeholder="Drittaktuellstes Jahr" required/>
+<!--Break-->
+<br></br>
+    <p>Kurzfr. Verbind.</p>
+    <input type="float" name="kurzfrVerbind0" placeholder="Aktuelles Jahr" required/>
+    <p></p>
+    <input type="float" name="kurzfrVerbind1" placeholder="Zweitaktuellstes Jahr" required/>
+    <p></p>
+    <input type="float" name="kurzfrVerbind2" placeholder="Drittaktuellstes Jahr" required/>
+<!--Break-->
+<br></br>
+    <p>Langfr. Verbind.</p>
+    <input type="float" name="langfrVerbind0" placeholder="Aktuelles Jahr" required/>
+    <p></p>
+    <input type="float" name="langfrVerbind1" placeholder="Zweitaktuellstes Jahr" required/>
+    <p></p>
+    <input type="float" name="langfrVerbind2" placeholder="Drittaktuellstes Jahr" required/>
 <!--Break-->
 <br></br>
     <p>Anlagevermögen</p>
     <input type="float" name="anlagevermoegen0" placeholder="Aktuelles Jahr" required/>
     <p></p>
-    <input type="float" name="anlagevermoegen1" placeholder="Zweiaktuellstes Jahr" required/>
+    <input type="float" name="anlagevermoegen1" placeholder="Zweitaktuellstes Jahr" required/>
     <p></p>
     <input type="float" name="anlagevermoegen2" placeholder="Drittaktuellstes Jahr" required/>
+<!--Break-->
+<br></br>
+    <p>Sachanlagen</p>
+    <input type="float" name="sachanlagen0" placeholder="Aktuelles Jahr" required/>
+    <p></p>
+    <input type="float" name="sachanlagen1" placeholder="Zweitaktuellstes Jahr" required/>
+    <p></p>
+    <input type="float" name="sachanlagen2" placeholder="Drittaktuellstes Jahr" required/>
+    <p></p>
+    <input type="float" name="s" placeholder="indiv. Sicherheitsmarge %" required/>
+<!--Break-->
+<br></br>
+    <p>Goodwill</p>
+    <input type="float" name="goodwill0" placeholder="Aktuelles Jahr" required/>
+    <p></p>
+    <input type="float" name="goodwill1" placeholder="Zweitaktuellstes Jahr" required/>
+    <p></p>
+    <input type="float" name="goodwill2" placeholder="Drittaktuellstes Jahr" required/>
+<!--Break-->
+<br></br>
+    <p>Immaterielle Vermögensw. </p>
+    <input type="float" name="immaterielleVermoegensw0" placeholder="Aktuelles Jahr" required/>
+    <p></p>
+    <input type="float" name="immaterielleVermoegensw1" placeholder="Zweitaktuellstes Jahr" required/>
+    <p></p>
+    <input type="float" name="immaterielleVermoegensw2" placeholder="Drittaktuellstes Jahr" required/>
+    <p></p>
+    <input type="float" name="i" placeholder="indiv. Sicherheitsmarge %" required/>
+<!--Break-->
+<br></br>
+    <p>Finanzanlagen</p>
+    <input type="float" name="finanzanlagen0" placeholder="Aktuelles Jahr" required/>
+    <p></p>
+    <input type="float" name="finanzanlagen1" placeholder="Zweitaktuellstes Jahr" required/>
+    <p></p>
+    <input type="float" name="finanzanlagen2" placeholder="Drittaktuellstes Jahr" required/>
+<!--Break-->
+<br></br>
+    <p>Liquide Mittel</p>
+    <input type="float" name="liquideMittel0" placeholder="Aktuelles Jahr" required/>
+    <p></p>
+    <input type="float" name="liquideMittel1" placeholder="Zweitaktuellstes Jahr" required/>
+    <p></p>
+    <input type="float" name="liquideMittel2" placeholder="Drittaktuellstes Jahr" required/>
 <!--Break-->
 <br></br>
     <p>Vorräte</p>
     <input type="float" name="vorraete0" placeholder="Aktuelles Jahr" required/>
     <p></p>
-    <input type="float" name="vorraete1" placeholder="Zweiaktuellstes Jahr" required/>
+    <input type="float" name="vorraete1" placeholder="Zweitaktuellstes Jahr" required/>
     <p></p>
     <input type="float" name="vorraete2" placeholder="Drittaktuellstes Jahr" required/>
+    <p></p>
+    <input type="float" name="v" placeholder="indiv. Sicherheitsmarge %" required/>
 <!--Break-->
 <br></br>
     <p>Forderungen LuL</p>
     <input type="float" name="forderungenLuL0" placeholder="Aktuelles Jahr" required/>
     <p></p>
-    <input type="float" name="forderungenLuL1" placeholder="Zweiaktuellstes Jahr" required/>
+    <input type="float" name="forderungenLuL1" placeholder="Zweitaktuellstes Jahr" required/>
     <p></p>
     <input type="float" name="forderungenLuL2" placeholder="Drittaktuellstes Jahr" required/>
+    <p></p>
+    <input type="float" name="f" placeholder="indiv. Sicherheitsmarge %" required/>
 <!--Break-->
 <br></br>
     <p>Verbindlichkeiten LuL</p>
     <input type="float" name="verbindlichkeitenLuL0" placeholder="Aktuelles Jahr" required/>
     <p></p>
-    <input type="float" name="verbindlichkeitenLuL1" placeholder="Zweiaktuellstes Jahr" required/>
+    <input type="float" name="verbindlichkeitenLuL1" placeholder="Zweitaktuellstes Jahr" required/>
     <p></p>
     <input type="float" name="verbindlichkeitenLuL2" placeholder="Drittaktuellstes Jahr" required/>
 <!--Break-->
@@ -186,7 +248,7 @@
     <p>Operativ. Cash Flow</p>
     <input type="float" name="operaCashFlow0" placeholder="Aktuelles Jahr" required/>
     <p></p>
-    <input type="float" name="operaCashFlow1" placeholder="Zweiaktuellstes Jahr" required/>
+    <input type="float" name="operaCashFlow1" placeholder="Zweitaktuellstes Jahr" required/>
     <p></p>
     <input type="float" name="operaCashFlow2" placeholder="Drittaktuellstes Jahr" required/>
 <!--Break-->
@@ -194,16 +256,34 @@
     <p>Invest. Cash Flow</p>
     <input type="float" name="investCashFlow0" placeholder="Aktuelles Jahr" required/>
     <p></p>
-    <input type="float" name="investCashFlow1" placeholder="Zweiaktuellstes Jahr" required/>
+    <input type="float" name="investCashFlow1" placeholder="Zweitaktuellstes Jahr" required/>
     <p></p>
     <input type="float" name="investCashFlow2" placeholder="Drittaktuellstes Jahr" required/>
 <!--Break-->
 <br></br>
+    <p>Dividende/Aktienrückkäufe</p>
+    <input type="float" name="dividende_rueckkauf0" placeholder="Aktuelles Jahr" required/>
+    <p></p>
+    <input type="float" name="dividende_rueckkauf1" placeholder="Zweitaktuellstes Jahr" required/>
+    <p></p>
+    <input type="float" name="dividende_rueckkauf2" placeholder="Drittaktuellstes Jahr" required/>
+    <p></p>
+<font size="6">Substanzwert</font><br />
+    <p>Allgemeine Sicherheitsmarge</p>
+    <input type="float" name="sicherheitsmarge" placeholder="in %" required/>
+<!--Break-->
+<br></br>
+<font size="5">Gesamtkapitalkosten</font><br />
+    <p>Eigenkapitalkosten</p>
+    <input type="float" name="eigenkapitalkosten" placeholder="in % (not required)" />
+<!--Break-->
+<br></br>
 
 <!--Button -->
-    <a href="6profitabilitaet3PDF_DE.php">
+    <a href="6beides3_pdf_de.php">
     <input type="submit" class="btn btn-primary" Value="Go!">
     </a>
+
   </form>
 
 <!--Break-->
