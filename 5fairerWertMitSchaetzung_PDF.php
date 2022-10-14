@@ -5,26 +5,26 @@ require("fpdf.php");
 $pdf = new FPDF();
 
 //Daten des Unternehmens
-$p_name = $_POST['name'];
-$p_isin = $_POST['isin'];
-$p_jahr_geschaeftsbericht = $_POST['aktuellesJahr'];
-$p_waerhung = $_POST['waehrung'];
-$p_einheit = $_POST['einheit'];
+$p_name = $_PUT['name'];
+$p_isin = $_PUT['isin'];
+$p_jahr_geschaeftsbericht = $_PUT['aktuellesJahr'];
+$p_waerhung = $_PUT['waehrung'];
+$p_einheit = $_PUT['einheit'];
 
 //Initialisierung der Werte Anfang_______________________________________
 
-$p_1 = $_POST['1'];
-$p_2 = $_POST['2'];
-$p_3 = $_POST['3'];
-$p_4 = $_POST['4'];
-$p_5 = $_POST['5'];
+$p_1 = $_PUT['1'];
+$p_2 = $_PUT['2'];
+$p_3 = $_PUT['3'];
+$p_4 = $_PUT['4'];
+$p_5 = $_PUT['5'];
 
-$p_sicherheitsmarge = 1 - ($_POST['sicherheitsmarge'] / 100);
+$p_sicherheitsmarge = 1 - ($_PUT['sicherheitsmarge'] / 100);
 
-$p_schaetzung = $_POST['schaetzung'];
+$p_schaetzung = $_PUT['schaetzung'];
 
-$p_eigenkapitalkosten = 1 + ($_POST['eigenkapitalkosten'] / 100);
-$p_langfristigesWachstum = 1 + $_POST['langfristigesWachstum'] / 100;
+$p_eigenkapitalkosten = 1 + ($_PUT['eigenkapitalkosten'] / 100);
+$p_langfristigesWachstum = 1 + $_PUT['langfristigesWachstum'] / 100;
 
 $p_ewigeRente = ($p_5 * $p_langfristigesWachstum) / ($p_eigenkapitalkosten - $p_langfristigesWachstum);
 $p_abgezinsteEwigeRente = $p_ewigeRente / pow($p_eigenkapitalkosten,5);
@@ -106,7 +106,7 @@ $pdf->Cell(0,5,'',0,1,'C');
 //Kopf mit grundlegenden Informationen
 
 //Berechnung Ertragswert je Anteil
-$p_gesamtertragswert = $p_sicherheitsmarge * ( ($_POST['1'] / pow($p_eigenkapitalkosten,1) ) + ($_POST['2'] / pow($p_eigenkapitalkosten,2) ) +($_POST['3'] / pow($p_eigenkapitalkosten,3) ) + ($_POST['4'] / pow($p_eigenkapitalkosten,4) ) + ($_POST['5'] / pow($p_eigenkapitalkosten,5) ) + $p_abgezinsteEwigeRente);
+$p_gesamtertragswert = $p_sicherheitsmarge * ( ($_PUT['1'] / pow($p_eigenkapitalkosten,1) ) + ($_PUT['2'] / pow($p_eigenkapitalkosten,2) ) +($_PUT['3'] / pow($p_eigenkapitalkosten,3) ) + ($_PUT['4'] / pow($p_eigenkapitalkosten,4) ) + ($_PUT['5'] / pow($p_eigenkapitalkosten,5) ) + $p_abgezinsteEwigeRente);
 
 $pdf->SetTextColor(0,0,0);
 $pdf->SetFont("Arial","B",12);
@@ -120,7 +120,7 @@ $pdf->Cell(130,5,utf8_decode('Währung: '),0,0); $pdf->SetFont("Arial","",12); $
 $pdf->SetFont("Arial","B",12);
 $pdf->Cell(130,5,utf8_decode('Einheit: '),0,0); $pdf->SetFont("Arial","",12); $pdf->Cell(70,5,$p_einheit,0,1,'L');
 $pdf->SetFont("Arial","B",12);
-$pdf->Cell(130,5,utf8_decode('Ausgegebene Aktien: '),0,0,); $pdf->SetFont("Arial","",12); $pdf->Cell(70,5,$_POST['anzahlAktien'],0,1,'L');
+$pdf->Cell(130,5,utf8_decode('Ausgegebene Aktien: '),0,0,); $pdf->SetFont("Arial","",12); $pdf->Cell(70,5,$_PUT['anzahlAktien'],0,1,'L');
 $pdf->SetFont("Arial","B",12);
 
 //Abstand 
@@ -176,7 +176,7 @@ $pdf->Cell(38,5,'1',1,0,'C'); $pdf->Cell(38,5,'2',1,0,'C'); $pdf->Cell(38,5,'3',
 
 $pdf->Cell(0,5,'',0,1,'C');
 $pdf->SetFont("Arial","",12);
-$pdf->Cell(38,5,$_POST['1'],1,0,'C'); $pdf->Cell(38,5,$_POST['2'],1,0,'C'); $pdf->Cell(38,5,$_POST['3'],1,0,'C'); $pdf->Cell(38,5,$_POST['4'],1,0,'C'); $pdf->Cell(38,5,$_POST['5'],1,0,'C'); 
+$pdf->Cell(38,5,$_PUT['1'],1,0,'C'); $pdf->Cell(38,5,$_PUT['2'],1,0,'C'); $pdf->Cell(38,5,$_PUT['3'],1,0,'C'); $pdf->Cell(38,5,$_PUT['4'],1,0,'C'); $pdf->Cell(38,5,$_PUT['5'],1,0,'C'); 
 
 //Abstand 
 $pdf->Cell(0,5,'',0,1,'C');
@@ -231,7 +231,7 @@ $pdf->Cell(47.5,5,'Substanzwert',1,0,'C'); $pdf->Cell(47.5,5,'Ertragswert',1,0,'
 
 $pdf->Cell(0,5,'',0,1,'C');
 $pdf->SetFont("Arial","",12);
-$pdf->Cell(47.5,5,round($p_schaetzung / $_POST['anzahlAktien'],2),1,0,'C'); $pdf->Cell(47.5,5,round($p_gesamtertragswert / $_POST['anzahlAktien'],2),1,0,'C'); $pdf->Cell(47.5,5,round(($p_gesamtertragswert+$p_schaetzung) / $_POST['anzahlAktien'],2),1,0,'C');
+$pdf->Cell(47.5,5,round($p_schaetzung / $_PUT['anzahlAktien'],2),1,0,'C'); $pdf->Cell(47.5,5,round($p_gesamtertragswert / $_PUT['anzahlAktien'],2),1,0,'C'); $pdf->Cell(47.5,5,round(($p_gesamtertragswert+$p_schaetzung) / $_PUT['anzahlAktien'],2),1,0,'C');
 
 //Ausgabe
 $pdf->Output('Fair_Value_'.$p_name.'_'.$p_isin.'.pdf', 'D');

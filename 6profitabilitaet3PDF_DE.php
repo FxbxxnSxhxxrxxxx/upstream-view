@@ -5,61 +5,61 @@ require("fpdf.php");
 $pdf = new FPDF();
 
 //Daten des Unternehmens
-$p_name = $_POST['name'];
-$p_isin = $_POST['isin'];
-$p_jahr_geschaeftsbericht = $_POST['aktuellesJahr'];
-$p_waerhung = $_POST['waehrung'];
-$p_einheit = $_POST['einheit'];
+$p_name = $_PUT['name'];
+$p_isin = $_PUT['isin'];
+$p_jahr_geschaeftsbericht = $_PUT['aktuellesJahr'];
+$p_waerhung = $_PUT['waehrung'];
+$p_einheit = $_PUT['einheit'];
 $p_zeitraum = 2;
 
 //Initialisierung der Werte Anfang_______________________________________
 
-$p_umsatz[0] = $_POST['umsatz0'];
-$p_umsatz[1] = $_POST['umsatz1'];
-$p_umsatz[2] = $_POST['umsatz2'];
+$p_umsatz[0] = $_PUT['umsatz0'];
+$p_umsatz[1] = $_PUT['umsatz1'];
+$p_umsatz[2] = $_PUT['umsatz2'];
 
-$p_abschreibungen[0] = $_POST['abschreibungen0'];
-$p_abschreibungen[1] = $_POST['abschreibungen1'];
-$p_abschreibungen[2] = $_POST['abschreibungen2'];
-$p_ebit[0] = $_POST['ebit0'];
-$p_ebit[1] = $_POST['ebit1'];
-$p_ebit[2] = $_POST['ebit2'];
-$p_zinsaufwendungen[0] = $_POST['zinsaufwendungen0'];
-$p_zinsaufwendungen[1] = $_POST['zinsaufwendungen1'];
-$p_zinsaufwendungen[2] = $_POST['zinsaufwendungen2'];
+$p_abschreibungen[0] = $_PUT['abschreibungen0'];
+$p_abschreibungen[1] = $_PUT['abschreibungen1'];
+$p_abschreibungen[2] = $_PUT['abschreibungen2'];
+$p_ebit[0] = $_PUT['ebit0'];
+$p_ebit[1] = $_PUT['ebit1'];
+$p_ebit[2] = $_PUT['ebit2'];
+$p_zinsaufwendungen[0] = $_PUT['zinsaufwendungen0'];
+$p_zinsaufwendungen[1] = $_PUT['zinsaufwendungen1'];
+$p_zinsaufwendungen[2] = $_PUT['zinsaufwendungen2'];
 
-$p_steuern[0] = $_POST['steuern0'];
-$p_steuern[1] = $_POST['steuern1'];
-$p_steuern[2] = $_POST['steuern2'];
-$p_jahresueberschuss[0] = $_POST['jahresueberschuss0'];
-$p_jahresueberschuss[1] = $_POST['jahresueberschuss1'];
-$p_jahresueberschuss[2] = $_POST['jahresueberschuss2'];
+$p_steuern[0] = $_PUT['steuern0'];
+$p_steuern[1] = $_PUT['steuern1'];
+$p_steuern[2] = $_PUT['steuern2'];
+$p_jahresueberschuss[0] = $_PUT['jahresueberschuss0'];
+$p_jahresueberschuss[1] = $_PUT['jahresueberschuss1'];
+$p_jahresueberschuss[2] = $_PUT['jahresueberschuss2'];
 
-$p_bilanzsumme[0] = $_POST['bilanzsumme0'];
-$p_bilanzsumme[1] = $_POST['bilanzsumme1'];
-$p_bilanzsumme[2] = $_POST['bilanzsumme2'];
-$p_eigenkapital[0] = $_POST['eigenkapital0'];
-$p_eigenkapital[1] = $_POST['eigenkapital1'];
-$p_eigenkapital[2] = $_POST['eigenkapital2'];
-$p_anlagevermoegen[0] = $_POST['anlagevermoegen0'];
-$p_anlagevermoegen[1] = $_POST['anlagevermoegen1'];
-$p_anlagevermoegen[2] = $_POST['anlagevermoegen2'];
-$p_vorraete[0] = $_POST['vorraete0'];
-$p_vorraete[1] = $_POST['vorraete1'];
-$p_vorraete[2] = $_POST['vorraete2'];
-$p_forderungenLuL[0] = $_POST['forderungenLuL0'];
-$p_forderungenLuL[1] = $_POST['forderungenLuL1'];
-$p_forderungenLuL[2] = $_POST['forderungenLuL2'];
-$p_verbindlichkeitenLuL[0] = $_POST['verbindlichkeitenLuL0'];
-$p_verbindlichkeitenLuL[1] = $_POST['verbindlichkeitenLuL1'];
-$p_verbindlichkeitenLuL[2] = $_POST['verbindlichkeitenLuL2'];
+$p_bilanzsumme[0] = $_PUT['bilanzsumme0'];
+$p_bilanzsumme[1] = $_PUT['bilanzsumme1'];
+$p_bilanzsumme[2] = $_PUT['bilanzsumme2'];
+$p_eigenkapital[0] = $_PUT['eigenkapital0'];
+$p_eigenkapital[1] = $_PUT['eigenkapital1'];
+$p_eigenkapital[2] = $_PUT['eigenkapital2'];
+$p_anlagevermoegen[0] = $_PUT['anlagevermoegen0'];
+$p_anlagevermoegen[1] = $_PUT['anlagevermoegen1'];
+$p_anlagevermoegen[2] = $_PUT['anlagevermoegen2'];
+$p_vorraete[0] = $_PUT['vorraete0'];
+$p_vorraete[1] = $_PUT['vorraete1'];
+$p_vorraete[2] = $_PUT['vorraete2'];
+$p_forderungenLuL[0] = $_PUT['forderungenLuL0'];
+$p_forderungenLuL[1] = $_PUT['forderungenLuL1'];
+$p_forderungenLuL[2] = $_PUT['forderungenLuL2'];
+$p_verbindlichkeitenLuL[0] = $_PUT['verbindlichkeitenLuL0'];
+$p_verbindlichkeitenLuL[1] = $_PUT['verbindlichkeitenLuL1'];
+$p_verbindlichkeitenLuL[2] = $_PUT['verbindlichkeitenLuL2'];
 
-$p_cashflowOperativ[0] = $_POST['operaCashFlow0'];
-$p_cashflowOperativ[1] = $_POST['operaCashFlow1'];
-$p_cashflowOperativ[2] = $_POST['operaCashFlow2'];
-$p_cashflowInvestiv[0] = $_POST['investCashFlow0'];
-$p_cashflowInvestiv[1] = $_POST['investCashFlow1'];
-$p_cashflowInvestiv[2] = $_POST['investCashFlow2'];
+$p_cashflowOperativ[0] = $_PUT['operaCashFlow0'];
+$p_cashflowOperativ[1] = $_PUT['operaCashFlow1'];
+$p_cashflowOperativ[2] = $_PUT['operaCashFlow2'];
+$p_cashflowInvestiv[0] = $_PUT['investCashFlow0'];
+$p_cashflowInvestiv[1] = $_PUT['investCashFlow1'];
+$p_cashflowInvestiv[2] = $_PUT['investCashFlow2'];
 
 //Initialisierung der Werte Ende__________________________________________
 

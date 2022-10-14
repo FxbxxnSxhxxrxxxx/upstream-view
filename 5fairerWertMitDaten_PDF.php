@@ -5,33 +5,33 @@ require("fpdf.php");
 $pdf = new FPDF();
 
 //Daten des Unternehmens
-$p_name = $_POST['name'];
-$p_isin = $_POST['isin'];
-$p_jahr_geschaeftsbericht = $_POST['aktuellesJahr'];
-$p_waerhung = $_POST['waehrung'];
-$p_einheit = $_POST['einheit'];
+$p_name = $_PUT['name'];
+$p_isin = $_PUT['isin'];
+$p_jahr_geschaeftsbericht = $_PUT['aktuellesJahr'];
+$p_waerhung = $_PUT['waehrung'];
+$p_einheit = $_PUT['einheit'];
 
 //Initialisierung der Werte Anfang_______________________________________
 
-$p_1 = $_POST['1'];
-$p_2 = $_POST['2'];
-$p_3 = $_POST['3'];
-$p_4 = $_POST['4'];
-$p_5 = $_POST['5'];
+$p_1 = $_PUT['1'];
+$p_2 = $_PUT['2'];
+$p_3 = $_PUT['3'];
+$p_4 = $_PUT['4'];
+$p_5 = $_PUT['5'];
 
-$p_fremdkapital = $_POST['fremdkapital0'];
+$p_fremdkapital = $_PUT['fremdkapital0'];
 
-$p_sachanlagen = $_POST['sachanlagen0'];
-$p_immaterielleVermoegensw = $_POST['immaterielleVermoegensw0'];
-$p_finanzanlagen = $_POST['finanzanlagen0'];
-$p_liquideMittel = $_POST['liquideMittel0'];
-$p_vorraete = $_POST['vorraete0'];
-$p_forderungenLuL = $_POST['forderungenLuL0'];
+$p_sachanlagen = $_PUT['sachanlagen0'];
+$p_immaterielleVermoegensw = $_PUT['immaterielleVermoegensw0'];
+$p_finanzanlagen = $_PUT['finanzanlagen0'];
+$p_liquideMittel = $_PUT['liquideMittel0'];
+$p_vorraete = $_PUT['vorraete0'];
+$p_forderungenLuL = $_PUT['forderungenLuL0'];
 
-$p_sicherheitsmarge = 1 - ($_POST['sicherheitsmarge'] / 100);
+$p_sicherheitsmarge = 1 - ($_PUT['sicherheitsmarge'] / 100);
 
-$p_eigenkapitalkosten = 1 + ($_POST['eigenkapitalkosten'] / 100);
-$p_langfristigesWachstum = 1 + $_POST['langfristigesWachstum'] / 100;
+$p_eigenkapitalkosten = 1 + ($_PUT['eigenkapitalkosten'] / 100);
+$p_langfristigesWachstum = 1 + $_PUT['langfristigesWachstum'] / 100;
 
 $p_ewigeRente = ($p_5 * $p_langfristigesWachstum) / ($p_eigenkapitalkosten - $p_langfristigesWachstum);
 $p_abgezinsteEwigeRente = $p_ewigeRente / pow($p_eigenkapitalkosten,5);
@@ -113,10 +113,10 @@ $pdf->Cell(0,5,'',0,1,'C');
 //Kopf mit grundlegenden Informationen
 
 //Berechnung Substanzwert je Anteil
-$p_gesamtsubstanzwert = ( ( ($_POST['s'] / 100) * $p_sachanlagen + ($_POST['f'] / 100) * $p_forderungenLuL + ($_POST['v'] / 100) * $p_vorraete + ($_POST['i'] / 100) * $p_immaterielleVermoegensw) * $p_sicherheitsmarge)+ $p_liquideMittel + $p_finanzanlagen - ($p_fremdkapital); 
+$p_gesamtsubstanzwert = ( ( ($_PUT['s'] / 100) * $p_sachanlagen + ($_PUT['f'] / 100) * $p_forderungenLuL + ($_PUT['v'] / 100) * $p_vorraete + ($_PUT['i'] / 100) * $p_immaterielleVermoegensw) * $p_sicherheitsmarge)+ $p_liquideMittel + $p_finanzanlagen - ($p_fremdkapital); 
 
 //Berechnung Ertragswert je Anteil
-$p_gesamtertragswert = $p_sicherheitsmarge * ( ($_POST['1'] / pow($p_eigenkapitalkosten,1) ) + ($_POST['2'] / pow($p_eigenkapitalkosten,2) ) +($_POST['3'] / pow($p_eigenkapitalkosten,3) ) + ($_POST['4'] / pow($p_eigenkapitalkosten,4) ) + ($_POST['5'] / pow($p_eigenkapitalkosten,5) ) + $p_abgezinsteEwigeRente);
+$p_gesamtertragswert = $p_sicherheitsmarge * ( ($_PUT['1'] / pow($p_eigenkapitalkosten,1) ) + ($_PUT['2'] / pow($p_eigenkapitalkosten,2) ) +($_PUT['3'] / pow($p_eigenkapitalkosten,3) ) + ($_PUT['4'] / pow($p_eigenkapitalkosten,4) ) + ($_PUT['5'] / pow($p_eigenkapitalkosten,5) ) + $p_abgezinsteEwigeRente);
 
 $pdf->SetTextColor(0,0,0);
 $pdf->SetFont("Arial","B",12);
@@ -130,7 +130,7 @@ $pdf->Cell(130,5,utf8_decode('Währung: '),0,0); $pdf->SetFont("Arial","",12); $
 $pdf->SetFont("Arial","B",12);
 $pdf->Cell(130,5,utf8_decode('Einheit: '),0,0); $pdf->SetFont("Arial","",12); $pdf->Cell(70,5,$p_einheit,0,1,'L');
 $pdf->SetFont("Arial","B",12);
-$pdf->Cell(130,5,utf8_decode('Ausgegebene Aktien: '),0,0,); $pdf->SetFont("Arial","",12); $pdf->Cell(70,5,$_POST['anzahlAktien'],0,1,'L');
+$pdf->Cell(130,5,utf8_decode('Ausgegebene Aktien: '),0,0,); $pdf->SetFont("Arial","",12); $pdf->Cell(70,5,$_PUT['anzahlAktien'],0,1,'L');
 $pdf->SetFont("Arial","B",12);
 
 //Abstand 
@@ -194,7 +194,7 @@ $pdf->Cell(95,0,'',1,1,'C');
 //Dritte Zeile Design
 $pdf->SetTextColor(0,0,0);
 $pdf->SetFont("Arial","B",11);
-$pdf->Cell(47.5,5,'Sachanlagen'.' ('.$_POST['s'].'%)',1,0,'C'); $pdf->Cell(47.5,5,utf8_decode('Imm. Vermögensw.'.' ('.$_POST['i'].'%)'),1,0,'C'); $pdf->Cell(47.5,5,utf8_decode('Vorräte'.' ('.$_POST['v'].'%)'),1,0,'C'); $pdf->Cell(47.5,5,'Forderungen LuL'.' ('.$_POST['f'].'%)',1,0,'C');
+$pdf->Cell(47.5,5,'Sachanlagen'.' ('.$_PUT['s'].'%)',1,0,'C'); $pdf->Cell(47.5,5,utf8_decode('Imm. Vermögensw.'.' ('.$_PUT['i'].'%)'),1,0,'C'); $pdf->Cell(47.5,5,utf8_decode('Vorräte'.' ('.$_PUT['v'].'%)'),1,0,'C'); $pdf->Cell(47.5,5,'Forderungen LuL'.' ('.$_PUT['f'].'%)',1,0,'C');
 
 $pdf->Cell(0,5,'',0,1,'C');
 $pdf->SetFont("Arial","",12);
@@ -217,7 +217,7 @@ $pdf->Cell(38,5,'1',1,0,'C'); $pdf->Cell(38,5,'2',1,0,'C'); $pdf->Cell(38,5,'3',
 
 $pdf->Cell(0,5,'',0,1,'C');
 $pdf->SetFont("Arial","",12);
-$pdf->Cell(38,5,$_POST['1'],1,0,'C'); $pdf->Cell(38,5,$_POST['2'],1,0,'C'); $pdf->Cell(38,5,$_POST['3'],1,0,'C'); $pdf->Cell(38,5,$_POST['4'],1,0,'C'); $pdf->Cell(38,5,$_POST['5'],1,0,'C'); 
+$pdf->Cell(38,5,$_PUT['1'],1,0,'C'); $pdf->Cell(38,5,$_PUT['2'],1,0,'C'); $pdf->Cell(38,5,$_PUT['3'],1,0,'C'); $pdf->Cell(38,5,$_PUT['4'],1,0,'C'); $pdf->Cell(38,5,$_PUT['5'],1,0,'C'); 
 
 //Abstand 
 $pdf->Cell(0,5,'',0,1,'C');
@@ -272,7 +272,7 @@ $pdf->Cell(47.5,5,'Substanzwert',1,0,'C'); $pdf->Cell(47.5,5,'Ertragswert',1,0,'
 
 $pdf->Cell(0,5,'',0,1,'C');
 $pdf->SetFont("Arial","",12);
-$pdf->Cell(47.5,5,round($p_gesamtsubstanzwert / $_POST['anzahlAktien'],2),1,0,'C'); $pdf->Cell(47.5,5,round($p_gesamtertragswert / $_POST['anzahlAktien'],2),1,0,'C'); $pdf->Cell(47.5,5,round(($p_gesamtertragswert+$p_gesamtsubstanzwert) / $_POST['anzahlAktien'],2),1,0,'C');
+$pdf->Cell(47.5,5,round($p_gesamtsubstanzwert / $_PUT['anzahlAktien'],2),1,0,'C'); $pdf->Cell(47.5,5,round($p_gesamtertragswert / $_PUT['anzahlAktien'],2),1,0,'C'); $pdf->Cell(47.5,5,round(($p_gesamtertragswert+$p_gesamtsubstanzwert) / $_PUT['anzahlAktien'],2),1,0,'C');
 
 //Ausgabe
 $pdf->Output('Fair_Value_'.$p_name.'_'.$p_isin.'.pdf', 'D');
