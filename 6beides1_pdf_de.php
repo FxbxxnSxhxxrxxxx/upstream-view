@@ -5,39 +5,39 @@ require("fpdf.php");
 $pdf = new FPDF();
 
 //Daten des Unternehmens
-$p_name = $_DELETE['name'];
-$p_isin = $_DELETE['isin'];
-$p_jahr_geschaeftsbericht = $_DELETE['aktuellesJahr'];
-$p_waerhung = $_DELETE['waehrung'];
-$p_einheit = $_DELETE['einheit'];
+$p_name = $_POST['name'];
+$p_isin = $_POST['isin'];
+$p_jahr_geschaeftsbericht = $_POST['aktuellesJahr'];
+$p_waerhung = $_POST['waehrung'];
+$p_einheit = $_POST['einheit'];
 $p_zeitraum = 0;
 
 //Initialisierung der Werte Anfang_______________________________________
 
-$p_umsatz[0] = $_DELETE['umsatz0'];
-$p_abschreibungen[0] = $_DELETE['abschreibungen0'];
-$p_ebit[0] = $_DELETE['ebit0'];
-$p_zinsaufwendungen[0] = $_DELETE['zinsaufwendungen0'];
-$p_steuern[0] = $_DELETE['steuern0'];
-$p_jahresueberschuss[0] = $_DELETE['jahresueberschuss0'];
+$p_umsatz[0] = $_POST['umsatz0'];
+$p_abschreibungen[0] = $_POST['abschreibungen0'];
+$p_ebit[0] = $_POST['ebit0'];
+$p_zinsaufwendungen[0] = $_POST['zinsaufwendungen0'];
+$p_steuern[0] = $_POST['steuern0'];
+$p_jahresueberschuss[0] = $_POST['jahresueberschuss0'];
 
-$p_bilanzsumme[0] = $_DELETE['bilanzsumme0'];
-$p_eigenkapital[0] = $_DELETE['eigenkapital0'];
-$p_kurzfrVerbind[0] = $_DELETE['kurzfrVerbind0'];
-$p_langfrVerbind[0] = $_DELETE['langfrVerbind0'];
-$p_anlagevermoegen[0] = $_DELETE['anlagevermoegen0'];
-$p_sachanlagen[0] = $_DELETE['sachanlagen0'];
-$p_goodwill[0] = $_DELETE['goodwill0'];
-$p_immaterielleVermoegensw[0] = $_DELETE['immaterielleVermoegensw0'];
-$p_finanzanlagen[0] = $_DELETE['finanzanlagen0'];
-$p_liquideMittel[0] = $_DELETE['liquideMittel0'];
-$p_vorraete[0] = $_DELETE['vorraete0'];
-$p_forderungenLuL[0] = $_DELETE['forderungenLuL0'];
-$p_verbindlichkeitenLuL[0] = $_DELETE['verbindlichkeitenLuL0'];
+$p_bilanzsumme[0] = $_POST['bilanzsumme0'];
+$p_eigenkapital[0] = $_POST['eigenkapital0'];
+$p_kurzfrVerbind[0] = $_POST['kurzfrVerbind0'];
+$p_langfrVerbind[0] = $_POST['langfrVerbind0'];
+$p_anlagevermoegen[0] = $_POST['anlagevermoegen0'];
+$p_sachanlagen[0] = $_POST['sachanlagen0'];
+$p_goodwill[0] = $_POST['goodwill0'];
+$p_immaterielleVermoegensw[0] = $_POST['immaterielleVermoegensw0'];
+$p_finanzanlagen[0] = $_POST['finanzanlagen0'];
+$p_liquideMittel[0] = $_POST['liquideMittel0'];
+$p_vorraete[0] = $_POST['vorraete0'];
+$p_forderungenLuL[0] = $_POST['forderungenLuL0'];
+$p_verbindlichkeitenLuL[0] = $_POST['verbindlichkeitenLuL0'];
 
-$p_cashflowOperativ[0] = $_DELETE['operaCashFlow0'];
-$p_cashflowInvestiv[0] = $_DELETE['investCashFlow0'];
-$p_dividende_rueckkauf[0] = $_DELETE['dividende_rueckkauf0'];
+$p_cashflowOperativ[0] = $_POST['operaCashFlow0'];
+$p_cashflowInvestiv[0] = $_POST['investCashFlow0'];
+$p_dividende_rueckkauf[0] = $_POST['dividende_rueckkauf0'];
 
 //Initialisierung der Werte Ende__________________________________________
 
@@ -79,8 +79,8 @@ for($p_i = $p_zeitraum; $p_i >= 0; $p_i--){
     $p_kapitalintensitaet[$p_i] = round(100* $p_cashflowFrei[$p_i] / $p_bilanzsumme[$p_i],2);
     $p_vorratsintensitaet[$p_i] = round(100* $p_vorraete[$p_i] / $p_bilanzsumme[$p_i],2);
 
-    if($_DELETE['eigenkapitalkosten'] != null){
-        $p_gesamtkapitalkosten[$p_i] = round( ($p_eigenkapital[$p_i] / $p_bilanzsumme[$p_i])* (float)$_DELETE['eigenkapitalkosten'] + 100* ( ( ($p_bilanzsumme[$p_i]-$p_eigenkapital[$p_i]) / $p_bilanzsumme[$p_i] )* ($p_zinsaufwendungen[$p_i] / ($p_bilanzsumme[$p_i]-$p_eigenkapital[$p_i])) ),2);
+    if($_POST['eigenkapitalkosten'] != null){
+        $p_gesamtkapitalkosten[$p_i] = round( ($p_eigenkapital[$p_i] / $p_bilanzsumme[$p_i])* (float)$_POST['eigenkapitalkosten'] + 100* ( ( ($p_bilanzsumme[$p_i]-$p_eigenkapital[$p_i]) / $p_bilanzsumme[$p_i] )* ($p_zinsaufwendungen[$p_i] / ($p_bilanzsumme[$p_i]-$p_eigenkapital[$p_i])) ),2);
     }else
         $p_gesamtkapitalkosten[$p_i] = 'No value';
 }
@@ -160,7 +160,7 @@ $pdf->Cell(0,5,'',0,1,'C');
 //Kopf mit grundlegenden Informationen
 
 //Berechnung Substanzwert
-$p_substanzwert = ( ( (100-$_DELETE['sicherheitsmarge']) / 100) * ( ($_DELETE['s'] / 100) * $p_sachanlagen[0] + ($_DELETE['f'] / 100) * $p_forderungenLuL[0] + ($_DELETE['v'] / 100) * $p_vorraete[0] + ($_DELETE['i'] / 100) * $p_immaterielleVermoegensw[0]) + $p_liquideMittel[0] + $p_finanzanlagen[0] - ($p_bilanzsumme[0] - $p_eigenkapital[0]) ); 
+$p_substanzwert = ( ( (100-$_POST['sicherheitsmarge']) / 100) * ( ($_POST['s'] / 100) * $p_sachanlagen[0] + ($_POST['f'] / 100) * $p_forderungenLuL[0] + ($_POST['v'] / 100) * $p_vorraete[0] + ($_POST['i'] / 100) * $p_immaterielleVermoegensw[0]) + $p_liquideMittel[0] + $p_finanzanlagen[0] - ($p_bilanzsumme[0] - $p_eigenkapital[0]) ); 
 
 $pdf->SetTextColor(0,0,0);
 $pdf->SetFont("Arial","B",12);
@@ -174,7 +174,7 @@ $pdf->Cell(130,5,utf8_decode('Währung: '),0,0); $pdf->SetFont("Arial","",12); $
 $pdf->SetFont("Arial","B",12);
 $pdf->Cell(130,5,utf8_decode('Einheit: '),0,0); $pdf->SetFont("Arial","",12); $pdf->Cell(70,5,$p_einheit,0,1,'L');
 $pdf->SetFont("Arial","B",12);
-$pdf->Cell(130,5,'Substanzwert ('.(100-$_DELETE['sicherheitsmarge']).'%) ', 0,0); $pdf->SetFont("Arial","",12); $pdf->Cell(70,5,round($p_substanzwert,2),0,1,'L');
+$pdf->Cell(130,5,'Substanzwert ('.(100-$_POST['sicherheitsmarge']).'%) ', 0,0); $pdf->SetFont("Arial","",12); $pdf->Cell(70,5,round($p_substanzwert,2),0,1,'L');
 $pdf->Cell(190,5,'Einjahreszeitraum', 0,0,'R');
 
 //Abstand 
@@ -241,7 +241,7 @@ $pdf->Cell(47.5,5,$p_bilanzsumme[$p_i],1,0,'C'); $pdf->Cell(47.5,5,$p_eigenkapit
 //Abstand 
 $pdf->Cell(0,5,'',0,1,'C');
 $pdf->SetFont("Arial","B",12);
-$pdf->Cell(47.5,5,'Verbindlichkeiten LuL',1,0,'C'); $pdf->Cell(47.5,5,'Forderungen LuL'.' ('.$_DELETE['f'].'%)',1,0,'C'); 
+$pdf->Cell(47.5,5,'Verbindlichkeiten LuL',1,0,'C'); $pdf->Cell(47.5,5,'Forderungen LuL'.' ('.$_POST['f'].'%)',1,0,'C'); 
 //Ausgabe Zeilen
 for($p_i = $p_zeitraum; $p_i >= 0; $p_i--){
 $pdf->Cell(0,5,'',0,1,'C');
@@ -253,7 +253,7 @@ $pdf->Cell(47.5,5,$p_verbindlichkeitenLuL[$p_i],1,0,'C'); $pdf->Cell(47.5,5,$p_f
 //Abstand 
 $pdf->Cell(0,5,'',0,1,'C');
 $pdf->SetFont("Arial","B",12);
-$pdf->Cell(47.5,5,'Liquide Mittel',1,0,'C'); $pdf->Cell(47.5,5,'Finanzanlagen',1,0,'C'); $pdf->Cell(47.5,5,'Sachanlagen'.' ('.$_DELETE['s'].'%)',1,0,'C'); $pdf->Cell(47.5,5,utf8_decode('Vorräte'.' ('.$_DELETE['v'].'%)'),1,0,'C');
+$pdf->Cell(47.5,5,'Liquide Mittel',1,0,'C'); $pdf->Cell(47.5,5,'Finanzanlagen',1,0,'C'); $pdf->Cell(47.5,5,'Sachanlagen'.' ('.$_POST['s'].'%)',1,0,'C'); $pdf->Cell(47.5,5,utf8_decode('Vorräte'.' ('.$_POST['v'].'%)'),1,0,'C');
 //Ausgabe Zeilen
 for($p_i = $p_zeitraum; $p_i >= 0; $p_i--){ 
 $pdf->Cell(0,5,'',0,1,'C');
@@ -265,7 +265,7 @@ $pdf->Cell(47.5,5,$p_liquideMittel[$p_i],1,0,'C'); $pdf->Cell(47.5,5,$p_finanzan
 //Abstand 
 $pdf->Cell(0,5,'',0,1,'C');
 $pdf->SetFont("Arial","B",11);
-$pdf->Cell(47.5,5,utf8_decode('Imm. Vermögensw.'.' ('.$_DELETE['i'].'%)'),1,0,'C'); $pdf->Cell(47.5,5,'Goodwill',1,0,'C'); $pdf->Cell(47.5,5,utf8_decode('Anlagevermögen'),1,0,'C'); $pdf->Cell(47.5,5,utf8_decode('Umlaufvermögen'),1,0,'C');
+$pdf->Cell(47.5,5,utf8_decode('Imm. Vermögensw.'.' ('.$_POST['i'].'%)'),1,0,'C'); $pdf->Cell(47.5,5,'Goodwill',1,0,'C'); $pdf->Cell(47.5,5,utf8_decode('Anlagevermögen'),1,0,'C'); $pdf->Cell(47.5,5,utf8_decode('Umlaufvermögen'),1,0,'C');
 //Ausgabe Zeilen
 for($p_i = $p_zeitraum; $p_i >= 0; $p_i--){
 $pdf->Cell(0,5,'',0,1,'C');
@@ -330,7 +330,7 @@ for($p_i = $p_zeitraum; $p_i >= 0; $p_i--){
 }
 
 //Gesamtkapitalkosten Design
-if($_DELETE['eigenkapitalkosten'] != null){
+if($_POST['eigenkapitalkosten'] != null){
     //Abstand Doppelt
     $pdf->Cell(0,5,'',0,1,'C'); 
     $pdf->Cell(0,5,'',0,1,'C');
@@ -356,7 +356,7 @@ if($_DELETE['eigenkapitalkosten'] != null){
     $pdf->Cell(0,5,'',0,1,'C');
     $pdf->SetTextColor(0,0,0);
     $pdf->SetFont("Arial","B",11);
-    $pdf->Cell(47.5,5,$_DELETE['eigenkapitalkosten'].'%',1,0,'C');
+    $pdf->Cell(47.5,5,$_POST['eigenkapitalkosten'].'%',1,0,'C');
 }
 
 
